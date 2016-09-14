@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Braintree Donation</title>
+    <link rel="stylesheet" href="bootstrap_3.3.5_css_bootstrap.min.css" />
+
+</head>
+<body>
+
+<!-- when inserting into a Drupal page/node, copy/paste starting here -->
+
+<!-- Version collision is possible between the below files and the ones integrated in Drupal.  Examine your situation and adjust accordingly. -->
+
+<script src="jquery-1.12.4.min.js"></script>
+<script src="bootstrap_3.3.5_js_bootstrap.min.js"></script>
+
+<div class="container">
+
+    <h3>YOUR PAGE TITLE (<small>removing it won't affect actual function</small>)</h3>
+
+    <p>YOUR MESSAGE (<small>removing it won't affect actual function</small>)</p>
+
+    <!-- Button trigger modal -->
+    <p><button class="btn btn-success btn-lg" data-target="#donationModal" data-toggle="modal" type="button">Make a Donation</button></p>
+
+    <div aria-labelledby="donationModalLabel" class="modal fade" id="donationModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="donationModalLabel">Make a Donation</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="checkout-form" class="form-horizontal" action="/transaction-endpoint" method="post">
+                        <div id="error-message"></div>
+
+                        <label for="amount">Amount ($)</label>
+                        <div style="height: 50px;">
+                            <input type="number" name="amount" id="amount" placeholder="25" value="0">
+                        </div>
+
+                        <label for="card-number">Card Number</label>
+                        <div class="hosted-field" id="card-number" style="height: 50px;"></div>
+
+                        <label for="cvv">CVV</label>
+                        <div class="hosted-field" id="cvv" style="height: 50px;"></div>
+
+                        <label for="expiration-date">Expiration Date</label>
+                        <div class="hosted-field" id="expiration-date" style="height: 50px;"></div>
+
+                        <label for="postal-code">Post code</label>
+                        <div class="hosted-field" id="postal-code" style="height: 50px;"></div>
+
+                        <input type="hidden" name="payment-method-nonce">
+                        <input type="submit" class="btn btn-success" value="Pay" disabled>
+                    </form>
+
+                    <hr>
+                    <p id="transaction-result" class="lg-info text-muted">Transaction Status</p>
+
+                    <!-- Load the Client component. -->
+                    <script src="https://js.braintreegateway.com/web/3.1.0/js/client.min.js"></script>
+
+                    <!-- Load the Hosted Fields component. -->
+                    <script src="https://js.braintreegateway.com/web/3.1.0/js/hosted-fields.min.js"></script>
+
+                    <script src="btd.js"></script>
+
+                </div>
+
+                <div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Close</button></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- copy/paste end -->
+<a href="sandbox-report.php" target="_blank"></a>
+
+</body>
+</html>
